@@ -81,5 +81,11 @@ func (operations *MatrixOperations) Apply(
 	onTraverseAction MatrixApplicable,
 	matrix mat.Matrix,
 ) mat.Matrix {
+	rowsLength, colsLength := matrix.Dims()
 
+	resultMatrix := mat.NewDense(rowsLength, colsLength, nil)
+
+	resultMatrix.Apply(onTraverseAction, matrix)
+
+	return resultMatrix
 }
